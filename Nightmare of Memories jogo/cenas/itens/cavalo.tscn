@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blybfu1wfggt"]
+
+[ext_resource type="PackedScene" uid="uid://or7jury6jwty" path="res://cenas/phisc.tscn" id="1_ymico"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruwri"]
+size = Vector2(18, 15)
+
+[node name="cavalo" instance=ExtResource("1_ymico")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(293, 140)
+region_enabled = true
+region_rect = Rect2(208, 448, 32, 32)
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+position = Vector2(293, 140.5)
+shape = SubResource("RectangleShape2D_ruwri")

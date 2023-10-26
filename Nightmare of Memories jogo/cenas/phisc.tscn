@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://or7jury6jwty"]
+
+[ext_resource type="Texture2D" uid="uid://kk3p64i6ukjl" path="res://assets/16x16/Interiors_free_16x16.png" id="1_5xqc2"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(128, 399)
+texture = ExtResource("1_5xqc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
