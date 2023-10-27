@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://2vk7c6jd70gc"]
+
+[ext_resource type="PackedScene" uid="uid://dlaygm6ee3g6w" path="res://cenas/tiles.tscn" id="1_8jmwo"]
+[ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player.tscn" id="2_eq534"]
+[ext_resource type="PackedScene" uid="uid://b44dod0n2hj3r" path="res://boxerat.tscn" id="2_tw052"]
+[ext_resource type="Texture2D" uid="uid://cdmrmqcivvyru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-1.png" id="4_5nwoe"]
+[ext_resource type="Script" path="res://cenas/rato.gd" id="4_18t8i"]
+[ext_resource type="Texture2D" uid="uid://cnoymbvvtx8ru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-2.png" id="5_uqvn0"]
+[ext_resource type="Texture2D" uid="uid://cfold0l8ilybc" path="res://assets/MoveSet BoxingRat/Fight/Moveset-PunchClaw-2.png" id="6_klag7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72oo7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3656m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uqvn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uqvn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_klag7")
+}],
+"loop": true,
+"name": &"rato",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n26nm"]
+size = Vector2(24, 24)
+
+[node name="level 2" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TileMap" parent="Node2D" instance=ExtResource("1_8jmwo")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[node name="player" parent="." instance=ExtResource("2_eq534")]
+position = Vector2(-140, 67)
+
+[node name="boxerat" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(472, 1)
+
+[node name="areaload" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaload"]
+position = Vector2(350, 459)
+shape = SubResource("RectangleShape2D_72oo7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("4_18t8i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(242, -191)
+sprite_frames = SubResource("SpriteFrames_3656m")
+animation = &"rato"
+frame_progress = 0.457447
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(240, -187)
+shape = SubResource("RectangleShape2D_n26nm")
+
+[connection signal="body_entered" from="areaload" to="player" method="_on_areaload_body_entered"]
