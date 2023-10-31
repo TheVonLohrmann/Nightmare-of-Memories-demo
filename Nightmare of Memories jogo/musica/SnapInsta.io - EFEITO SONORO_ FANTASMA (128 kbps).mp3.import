@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btsl6b1mg242s"
+path="res://.godot/imported/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3-9e20325a09f8db9b7c933a357a43c9d4.mp3str"
+
+[deps]
+
+source_file="res://musica/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3"
+dest_files=["res://.godot/imported/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3-9e20325a09f8db9b7c933a357a43c9d4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

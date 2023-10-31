@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://r8l6fieku55l"
+path="res://.godot/imported/SnapInsta.io - 8-Bit Suspense Theme (128 kbps).mp3-a8565b0a8ad83db78c2c689745a68d41.mp3str"
+
+[deps]
+
+source_file="res://musica/SnapInsta.io - 8-Bit Suspense Theme (128 kbps).mp3"
+dest_files=["res://.godot/imported/SnapInsta.io - 8-Bit Suspense Theme (128 kbps).mp3-a8565b0a8ad83db78c2c689745a68d41.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bec0tstolk21l"
+path="res://.godot/imported/SnapInsta.io - Silent Hill_ Maternal  (_Piano + Voice_ Cover) (128 kbps).mp3-7a122cd60b0f8acd93799648ac09aad0.mp3str"
+
+[deps]
+
+source_file="res://musica/SnapInsta.io - Silent Hill_ Maternal  (_Piano + Voice_ Cover) (128 kbps).mp3"
+dest_files=["res://.godot/imported/SnapInsta.io - Silent Hill_ Maternal  (_Piano + Voice_ Cover) (128 kbps).mp3-7a122cd60b0f8acd93799648ac09aad0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://2vk7c6jd70gc"]
+
+[ext_resource type="PackedScene" uid="uid://dmvdbf6agbhk8" path="res://cenas/andares/primeiro_andar.tscn" id="1_0s3f2"]
+[ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="2_eq534"]
+[ext_resource type="PackedScene" uid="uid://dbbg6ao5noii2" path="res://cenas/enemy/boxerat.tscn" id="2_tw052"]
+[ext_resource type="Texture2D" uid="uid://cdmrmqcivvyru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-1.png" id="4_5nwoe"]
+[ext_resource type="Script" path="res://scripts/enemy/rato.gd" id="4_18t8i"]
+[ext_resource type="Texture2D" uid="uid://cnoymbvvtx8ru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-2.png" id="5_uqvn0"]
+[ext_resource type="Texture2D" uid="uid://cfold0l8ilybc" path="res://assets/MoveSet BoxingRat/Fight/Moveset-PunchClaw-2.png" id="6_klag7"]
+[ext_resource type="AudioStream" uid="uid://b5fs5y213fc5" path="res://musica/SnapInsta.io - Michelle (128 kbps).mp3" id="8_0errl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72oo7"]
+size = Vector2(30, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3656m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uqvn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uqvn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5nwoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_klag7")
+}],
+"loop": true,
+"name": &"rato",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n26nm"]
+size = Vector2(24, 24)
+
+[node name="level 2" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PrimeiroAndar" parent="Node2D" instance=ExtResource("1_0s3f2")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
+[node name="player" parent="." instance=ExtResource("2_eq534")]
+position = Vector2(25, 6)
+
+[node name="boxerat" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(304, -20)
+
+[node name="areaload" type="Area2D" parent="."]
+position = Vector2(27, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaload"]
+position = Vector2(133, 396)
+shape = SubResource("RectangleShape2D_72oo7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("4_18t8i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(305, -210)
+sprite_frames = SubResource("SpriteFrames_3656m")
+animation = &"rato"
+frame_progress = 0.457447
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(302, -203)
+shape = SubResource("RectangleShape2D_n26nm")
+
+[node name="boxerat2" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(156, -27)
+
+[node name="boxerat3" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(81, 181)
+
+[node name="boxerat4" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(320, 117)
+
+[node name="boxerat5" parent="." instance=ExtResource("2_tw052")]
+position = Vector2(55, 373)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0errl")
+volume_db = -22.0
+autoplay = true
+
+[connection signal="body_entered" from="areaload" to="player" method="_on_areaload_body_entered"]

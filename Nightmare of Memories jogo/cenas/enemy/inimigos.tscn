@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cacgyaeanepfu"]
+
+[ext_resource type="PackedScene" uid="uid://b7l2xon8c16pf" path="res://cenas/playerdomal.tscn" id="1_imlvq"]
+[ext_resource type="PackedScene" uid="uid://b44dod0n2hj3r" path="res://boxerat.tscn" id="2_tfvnx"]
+[ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player.tscn" id="3_iagy7"]
+
+[node name="inimigos" type="Node2D"]
+
+[node name="playerdomal" parent="." instance=ExtResource("1_imlvq")]
+position = Vector2(9, 87)
+
+[node name="boxerat" parent="." instance=ExtResource("2_tfvnx")]
+position = Vector2(325, 123)
+
+[node name="player" parent="." instance=ExtResource("3_iagy7")]
+position = Vector2(149, 163)

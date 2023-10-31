@@ -1,14 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dbqijbe6uuirv"]
+[gd_scene load_steps=19 format=3 uid="uid://dbqijbe6uuirv"]
 
-[ext_resource type="PackedScene" uid="uid://dej1gj4bsdct2" path="res://Scenes/Player.tscn" id="1_btr7n"]
-[ext_resource type="Texture2D" uid="uid://cbxxbruav38f3" path="res://Assets/Tilesets/Parallax assets/background1.png" id="2_ywwgb"]
-[ext_resource type="Texture2D" uid="uid://br7oc51qgt3e3" path="res://Assets/Tilesets/tileset.png" id="3_dracl"]
-[ext_resource type="Texture2D" uid="uid://d2wotokh3phwh" path="res://Assets/Tilesets/Parallax assets/background2.png" id="3_p4p0b"]
-[ext_resource type="Texture2D" uid="uid://b2io0wdlyu1i5" path="res://Assets/Tilesets/Parallax assets/background3.png" id="4_ml23n"]
-[ext_resource type="Texture2D" uid="uid://dpeft4f7x5al5" path="res://Assets/Tilesets/Parallax assets/background4.png" id="5_xhfqg"]
-[ext_resource type="Texture2D" uid="uid://pbyndiyg5jyl" path="res://Assets/Tilesets/Parallax assets/frontleaves.png" id="6_mcot5"]
-[ext_resource type="Texture2D" uid="uid://cjuxnwklskxkt" path="res://Assets/Tilesets/Parallax assets/pushes.png" id="7_40kh8"]
-[ext_resource type="Texture2D" uid="uid://cvkgqgukubbtd" path="res://Assets/Tilesets/Parallax assets/trees.png" id="8_a7v7t"]
+[ext_resource type="PackedScene" uid="uid://dej1gj4bsdct2" path="res://cenas/player/Playerrun.tscn" id="1_btr7n"]
+[ext_resource type="Texture2D" uid="uid://cbxxbruav38f3" path="res://cenas/load screen/background1.png" id="2_ywwgb"]
+[ext_resource type="Texture2D" uid="uid://d2wotokh3phwh" path="res://cenas/load screen/background2.png" id="3_p4p0b"]
+[ext_resource type="Texture2D" uid="uid://br7oc51qgt3e3" path="res://cenas/load screen/tileset.png" id="3_rsa0w"]
+[ext_resource type="Texture2D" uid="uid://b2io0wdlyu1i5" path="res://cenas/load screen/background3.png" id="4_ml23n"]
+[ext_resource type="Texture2D" uid="uid://dpeft4f7x5al5" path="res://cenas/load screen/background4.png" id="5_xhfqg"]
+[ext_resource type="Texture2D" uid="uid://pbyndiyg5jyl" path="res://cenas/load screen/frontleaves.png" id="6_mcot5"]
+[ext_resource type="Texture2D" uid="uid://cjuxnwklskxkt" path="res://cenas/load screen/pushes.png" id="7_40kh8"]
+[ext_resource type="Texture2D" uid="uid://cvkgqgukubbtd" path="res://cenas/load screen/trees.png" id="8_a7v7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfso7"]
 texture = ExtResource("2_ywwgb")
@@ -1019,7 +1019,7 @@ texture = ExtResource("3_p4p0b")
 7:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o27du"]
-texture = ExtResource("3_dracl")
+texture = ExtResource("3_rsa0w")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2696,9 +2696,6 @@ sources/5 = SubResource("TileSetAtlasSource_7cftv")
 sources/6 = SubResource("TileSetAtlasSource_5fq2x")
 sources/16 = SubResource("TileSetAtlasSource_o27du")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd0i7"]
-size = Vector2(23, 40)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2771,30 +2768,5 @@ position = Vector2(-97, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(68, -32)
-zoom = Vector2(6, 6)
+zoom = Vector2(2, 2)
 limit_right = 375
-position_smoothing_enabled = true
-
-[node name="Area2D" type="Area2D" parent="."]
-z_index = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(365.5, -10)
-shape = SubResource("RectangleShape2D_yd0i7")
-
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-z_index = 7
-
-[node name="CanvasModulate" type="CanvasModulate" parent="CanvasGroup"]
-texture_filter = 1
-color = Color(0.756863, 0.815686, 0.717647, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasGroup"]
-position = Vector2(-139, -45)
-energy = 0.69
-
-[node name="PointLight2D" type="PointLight2D" parent="CanvasGroup"]
-
-[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
-[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
-[connection signal="area_entered" from="Area2D" to="Player" method="_on_area_2d_area_entered"]
