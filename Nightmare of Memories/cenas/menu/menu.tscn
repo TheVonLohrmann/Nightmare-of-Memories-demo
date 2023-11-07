@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwl0l7ckhafc5"]
+
+[ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_q7w6h"]
+[ext_resource type="Texture2D" uid="uid://xu27sfet8e58" path="res://logo/Ilustracao_Sem_Titulo.png" id="2_623bc"]
+[ext_resource type="FontFile" uid="uid://bnl2o6gx1k34b" path="res://cenas/fonte/RevMiniPixel.ttf" id="2_n1jxu"]
+[ext_resource type="Theme" uid="uid://dqcaumrtxtrgd" path="res://cenas/fonte/new_theme.tres" id="3_mi2dl"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q7w6h")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 147.0
+offset_right = 194.0
+offset_bottom = 178.0
+
+[node name="paceholder" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n1jxu")
+text = "Made By"
+
+[node name="strongmouse" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_mi2dl")
+text = "strongmouse"
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 83.0
+offset_top = 50.0
+offset_right = 317.0
+offset_bottom = 159.0
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+texture_filter = 1
+position = Vector2(187, 47)
+scale = Vector2(0.111231, 0.0966825)
+texture = ExtResource("2_623bc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="play" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme = ExtResource("3_mi2dl")
+theme_override_font_sizes/font_size = 16
+text = "jogar"
+flat = true
+
+[node name="controles" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme = ExtResource("3_mi2dl")
+theme_override_font_sizes/font_size = 16
+text = "controles"
+flat = true
+
+[node name="sair" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer" groups=["button"]]
+layout_mode = 2
+theme = ExtResource("3_mi2dl")
+theme_override_font_sizes/font_size = 16
+text = "sair"
+flat = true
+
+[connection signal="pressed" from="HBoxContainer/strongmouse" to="." method="_on_strongmouse_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/sair" to="." method="_on_sair_pressed"]

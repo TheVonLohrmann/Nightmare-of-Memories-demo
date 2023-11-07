@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnyb8eb1lpap7"]
+
+[ext_resource type="Theme" uid="uid://dqcaumrtxtrgd" path="res://cenas/fonte/new_theme.tres" id="1_48n0l"]
+[ext_resource type="Script" path="res://scripts/menu/control.gd" id="1_ntnc2"]
+[ext_resource type="Texture2D" uid="uid://bpbk61xn78rx5" path="res://assets/controles.png" id="2_as0ie"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ntnc2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -9.0
+offset_top = 7.0
+offset_right = 375.0
+offset_bottom = 52.0
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_48n0l")
+text = "return"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(300, 196)
+texture = ExtResource("2_as0ie")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

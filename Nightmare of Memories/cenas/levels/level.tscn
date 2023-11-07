@@ -1,0 +1,145 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvuk1pgmql83v"]
+
+[ext_resource type="PackedScene" uid="uid://14iaaaa7ekk5" path="res://cenas/andares/sala2andar.tscn" id="1_n5cmf"]
+[ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="2_kxeud"]
+[ext_resource type="Texture2D" uid="uid://kk3p64i6ukjl" path="res://assets/16x16/Interiors_free_16x16.png" id="3_hkkrr"]
+[ext_resource type="AudioStream" uid="uid://btsl6b1mg242s" path="res://musica/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3" id="4_8b4nw"]
+[ext_resource type="PackedScene" uid="uid://b7l2xon8c16pf" path="res://cenas/enemy/playerdomal.tscn" id="4_xmlwx"]
+[ext_resource type="AudioStream" uid="uid://b5fs5y213fc5" path="res://musica/SnapInsta.io - Michelle (128 kbps).mp3" id="5_r8wk4"]
+[ext_resource type="Script" path="res://scripts/menu/warning_sign.gd" id="6_ffya7"]
+[ext_resource type="Texture2D" uid="uid://ckr5mcpqt33dp" path="res://assets/Dialog_Box_trespontos(16 x 16).png" id="7_82j3r"]
+[ext_resource type="Script" path="res://scripts/areas/key.gd" id="9_3xyjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g5js"]
+size = Vector2(38, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21bno"]
+size = Vector2(30.5, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0s15"]
+size = Vector2(6, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0nf8"]
+size = Vector2(48.25, 31.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m2ma"]
+size = Vector2(53, 7)
+
+[node name="level" type="Node2D"]
+
+[node name="terreno" type="Node2D" parent="."]
+
+[node name="Node2D" parent="terreno" instance=ExtResource("1_n5cmf")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
+[node name="player" parent="." instance=ExtResource("2_kxeud")]
+position = Vector2(347, 166)
+
+[node name="segundo andar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segundo andar"]
+z_index = 4
+position = Vector2(-39, -25.5)
+shape = SubResource("RectangleShape2D_2g5js")
+
+[node name="playerdomal" parent="." instance=ExtResource("4_xmlwx")]
+z_index = 5
+position = Vector2(284, -86)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal"]
+stream = ExtResource("4_8b4nw")
+volume_db = 1.0
+autoplay = true
+max_distance = 200.0
+
+[node name="playerdomal2" parent="." instance=ExtResource("4_xmlwx")]
+z_index = 5
+position = Vector2(64, 138)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal2"]
+stream = ExtResource("4_8b4nw")
+volume_db = 1.0
+autoplay = true
+max_distance = 200.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r8wk4")
+volume_db = -22.696
+autoplay = true
+
+[node name="warning_sign" type="Node2D" parent="."]
+z_index = 5
+texture_filter = 1
+position = Vector2(296, 153)
+script = ExtResource("6_ffya7")
+
+[node name="texture" type="Sprite2D" parent="warning_sign"]
+visible = false
+z_index = 4
+texture_filter = 1
+position = Vector2(-3.05176e-05, -9)
+scale = Vector2(0.468749, 0.375)
+texture = ExtResource("7_82j3r")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Area_sign" type="Area2D" parent="warning_sign"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warning_sign/Area_sign"]
+z_index = 3
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_21bno")
+
+[node name="playerdomal3" parent="." instance=ExtResource("4_xmlwx")]
+z_index = 2
+position = Vector2(89, -2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal3"]
+stream = ExtResource("4_8b4nw")
+volume_db = 1.0
+max_distance = 200.0
+
+[node name="key" type="Area2D" parent="."]
+z_index = 4
+position = Vector2(6, 139)
+script = ExtResource("9_3xyjr")
+doortex = NodePath("../DoorSecond")
+doorphis = NodePath("../Doorlevel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="key"]
+shape = SubResource("RectangleShape2D_c0s15")
+
+[node name="Sprite2D" type="Sprite2D" parent="key"]
+texture_filter = 1
+texture = ExtResource("3_hkkrr")
+region_enabled = true
+region_rect = Rect2(206.802, 417.607, 8.50241, 7.52136)
+
+[node name="DoorSecond" type="Area2D" parent="."]
+position = Vector2(68, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorSecond"]
+z_index = 6
+position = Vector2(-107.125, 10.125)
+shape = SubResource("RectangleShape2D_f0nf8")
+
+[node name="Door" type="Sprite2D" parent="DoorSecond"]
+z_index = 5
+texture_filter = 1
+position = Vector2(-107, 10)
+scale = Vector2(1.53125, 1.01613)
+texture = ExtResource("3_hkkrr")
+region_enabled = true
+region_rect = Rect2(79.8664, 416.327, 32.3179, 31.8391)
+
+[node name="Doorlevel" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doorlevel"]
+z_index = 4
+position = Vector2(-37.5, -42.5)
+shape = SubResource("RectangleShape2D_7m2ma")
+
+[connection signal="body_entered" from="segundo andar" to="player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="key" to="key" method="_on_body_entered"]
