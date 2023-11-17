@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://80tbkeehve7v"]
+
+[ext_resource type="Texture2D" uid="uid://jklqgd8bl8e" path="res://assets/lanterna.png" id="2_2ynt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpxye"]
+size = Vector2(7, 10)
+
+[node name="lanterna" type="Node2D"]
+
+[node name="LampTexture" type="Sprite2D" parent="."]
+scale = Vector2(0.396484, 0.365234)
+texture = ExtResource("2_2ynt4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_tpxye")

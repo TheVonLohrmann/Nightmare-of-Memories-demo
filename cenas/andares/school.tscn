@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://qp2a4c3jpd7k"]
+[gd_scene load_steps=14 format=3 uid="uid://qp2a4c3jpd7k"]
 
 [ext_resource type="Texture2D" uid="uid://kk3p64i6ukjl" path="res://assets/16x16/Interiors_free_16x16.png" id="1_2un7g"]
+[ext_resource type="Script" path="res://cenas/andares/school.gd" id="1_jcfw0"]
 [ext_resource type="Texture2D" uid="uid://h6qka8a3c1yt" path="res://assets/16x16/Room_Builder_free_16x16.png" id="2_ek5v2"]
 [ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="3_m8ggs"]
+[ext_resource type="Texture2D" uid="uid://dokycfocrxqhr" path="res://assets/Ilumination.png" id="5_pmjv1"]
+[ext_resource type="AudioStream" uid="uid://b5fs5y213fc5" path="res://musica/SnapInsta.io - Michelle (128 kbps).mp3" id="6_g2qcx"]
+[ext_resource type="PackedScene" uid="uid://b3sr8wy8a57ev" path="res://cenas/menu/pause_menu.tscn" id="7_y44m7"]
+[ext_resource type="PackedScene" uid="uid://6oba2417qj2a" path="res://cenas/itens/lamp.tscn" id="8_fibei"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0abhb"]
 texture = ExtResource("1_2un7g")
@@ -1381,6 +1386,7 @@ size = Vector2(235, 46.5)
 size = Vector2(23, 22)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_jcfw0")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -1487,11 +1493,40 @@ z_index = 3
 position = Vector2(0, -83)
 shape = SubResource("RectangleShape2D_u48kt")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -23)
-
-[node name="player" parent="." instance=ExtResource("3_m8ggs")]
-position = Vector2(-449, -92)
-
 [node name="player2" parent="." instance=ExtResource("3_m8ggs")]
 position = Vector2(-89, 55)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.99999, -50)
+scale = Vector2(0.84375, 0.476563)
+texture = ExtResource("5_pmjv1")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -63.0
+offset_top = -64.0
+offset_right = 83.0
+offset_bottom = -24.0
+theme_override_colors/font_color = Color(1, 0.0745098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Continua...."
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_g2qcx")
+volume_db = 1.0
+autoplay = true
+
+[node name="Pause_menu" parent="." instance=ExtResource("7_y44m7")]
+
+[node name="Lamp" parent="." instance=ExtResource("8_fibei")]
+position = Vector2(-68, 57)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="Lamp_coletada" from="Lamp" to="player2" method="_on_lamp_lamp_coletada"]

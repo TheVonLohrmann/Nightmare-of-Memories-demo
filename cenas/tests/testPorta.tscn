@@ -1,53 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8i336p6e8ju6"]
+[gd_scene load_steps=6 format=3 uid="uid://b8i336p6e8ju6"]
 
 [ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="1_pva38"]
-[ext_resource type="Texture2D" uid="uid://kk3p64i6ukjl" path="res://assets/16x16/Interiors_free_16x16.png" id="2_pt738"]
-[ext_resource type="Script" path="res://scripts/test/chave.gd" id="3_i2aq4"]
+[ext_resource type="PackedScene" uid="uid://coxh720g7su25" path="res://cenas/enig/key.tscn" id="2_0dk02"]
+[ext_resource type="Script" path="res://scripts/keys/Door.gd" id="3_hamkl"]
 [ext_resource type="Texture2D" uid="uid://bxkpe6schn76o" path="res://assets/16x16/porta1.png" id="5_xe1bp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmkvy"]
-size = Vector2(6, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0cqe"]
-size = Vector2(16, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rto8c"]
-size = Vector2(4, 34)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0slr6"]
+size = Vector2(20, 39)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_pva38")]
 position = Vector2(108, 81)
 
-[node name="chave" type="Area2D" parent="."]
-position = Vector2(98, 73)
-script = ExtResource("3_i2aq4")
-door = NodePath("../door")
-porta = NodePath("../StaticBody2D")
+[node name="Key" parent="." instance=ExtResource("2_0dk02")]
+position = Vector2(104, 58)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chave"]
-shape = SubResource("RectangleShape2D_lmkvy")
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2(74, 91)
+script = ExtResource("3_hamkl")
 
-[node name="Sprite2D" type="Sprite2D" parent="chave"]
-texture_filter = 1
-texture = ExtResource("2_pt738")
-region_enabled = true
-region_rect = Rect2(205.793, 416.698, 10.6117, 8.81308)
-
-[node name="door" type="Area2D" parent="."]
-position = Vector2(55, 91)
-
-[node name="Doortest" type="Sprite2D" parent="door"]
-texture_filter = 1
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
 texture = ExtResource("5_xe1bp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
-shape = SubResource("RectangleShape2D_d0cqe")
+[node name="Door_Zone" type="Area2D" parent="Door"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Collision" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(66, 91)
-shape = SubResource("RectangleShape2D_rto8c")
-
-[connection signal="body_entered" from="chave" to="chave" method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Door_Zone"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0slr6")

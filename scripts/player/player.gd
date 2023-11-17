@@ -13,12 +13,13 @@ var _is_attacking: bool = false
 @export_category("Objects")
 @export var _timer: Timer = null
 @export var _animation_tree: AnimationTree = null
+@export var _lamp_lihgt: PointLight2D
 
 
 func _ready() ->void:
 	_animation_tree.active = true
 	_state_machine = _animation_tree["parameters/playback"]
-	
+	_lamp_lihgt.visible = false
 	
 
 func _physics_process(_delta: float) -> void:
@@ -83,10 +84,17 @@ func _on_attack_area_body_entered(_body) -> void:
 		_body.update_health()
 
 
-func _on_area_2d_body_entered(body):
-	get_tree().change_scene_to_file("res://cenas/levels/level_2.tscn")
-
-
 func _on_areaload_body_entered(body):
 	get_tree().change_scene_to_file("res://cenas/load screen/LoadingScreen.tscn")
 
+
+func _on_segundo_andar_body_entered(body):
+	get_tree().change_scene_to_file("res://cenas/levels/level_2.tscn")
+
+
+func _on_lamp_lamp_coletada():
+	_lamp_lihgt.visible = true
+
+
+func _on_gardenarea_body_entered(body):
+	get_tree().change_scene_to_file("res://cenas/levels/level_3.tscn")

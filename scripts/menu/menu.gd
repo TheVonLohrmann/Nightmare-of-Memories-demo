@@ -18,4 +18,4 @@ func _on_sair_pressed():
 
 
 func _on_strongmouse_pressed():
-	var _open_channel: bool = OS.shell_open("https://github.com/TheVonLohrmann/Nightmare-of-Memories-demo")
+	var _Devs:bool = get_tree().change_scene_to_file("res://cenas/menu/strongmouse.tscn")

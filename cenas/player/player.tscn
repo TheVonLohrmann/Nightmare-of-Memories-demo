@@ -854,11 +854,13 @@ states/walk/node = SubResource("AnimationNodeBlendSpace2D_38xfp")
 states/walk/position = Vector2(482, 202)
 graph_offset = Vector2(0, 28.6609)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_timer", "_animation_tree") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_timer", "_animation_tree", "_lamp_lihgt") groups=["player"]]
 z_index = 5
+position = Vector2(83, 22)
 script = ExtResource("1_1w7sh")
 _timer = NodePath("AttackTimer")
 _animation_tree = NodePath("AnimationTree")
+_lamp_lihgt = NodePath("PointLight2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -885,6 +887,7 @@ zoom = Vector2(2, 2)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(28.1284, 22.541)
+color = Color(0.552941, 0.443137, 0, 1)
 range_item_cull_mask = 31
 shadow_enabled = true
 shadow_filter = 1

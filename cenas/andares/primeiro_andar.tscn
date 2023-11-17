@@ -1,5 +1,6 @@
-[gd_scene load_steps=65 format=3 uid="uid://dmvdbf6agbhk8"]
+[gd_scene load_steps=66 format=3 uid="uid://dmvdbf6agbhk8"]
 
+[ext_resource type="Script" path="res://cenas/andares/primeiro_andar.gd" id="1_0tvui"]
 [ext_resource type="Texture2D" uid="uid://c3wadodxdm84w" path="res://assets/TopDownHouse_FurnitureState1.png" id="1_apui4"]
 [ext_resource type="Texture2D" uid="uid://c4eddx8yn3t6f" path="res://assets/TopDownHouse_FurnitureState2.png" id="2_bk82e"]
 [ext_resource type="Texture2D" uid="uid://bjgxlxj1wme3k" path="res://assets/TopDownHouse_SmallItems.png" id="3_3a6y4"]
@@ -2934,6 +2935,7 @@ polygon = PackedVector2Array(288, -176, 288, -160, 240, -160, 240, -288, 368, -2
 polygon = PackedVector2Array(321, 1, 321, 15, 352, 15, 352, 0, 350, 0, 350, -13, 338, -13, 338, 0, 321, 0)
 
 [node name="PrimeiroAndar" type="Node2D"]
+script = ExtResource("1_0tvui")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -3176,3 +3178,20 @@ texture = ExtResource("8_sdhxr")
 position = Vector2(147.5, -38.5)
 scale = Vector2(0.722656, 0.425781)
 texture = ExtResource("8_sdhxr")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(25, 14)
+scale = Vector2(0.195313, 0.21875)
+energy = 0.44
+texture = ExtResource("8_sdhxr")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(78, 315.3)
+scale = Vector2(0.673828, 0.641602)
+energy = 0.9
+texture = ExtResource("8_sdhxr")
+texture_scale = 0.8
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

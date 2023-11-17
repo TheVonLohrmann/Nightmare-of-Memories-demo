@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnyb8eb1lpap7"]
+[gd_scene load_steps=5 format=3 uid="uid://bnyb8eb1lpap7"]
 
 [ext_resource type="Theme" uid="uid://dqcaumrtxtrgd" path="res://cenas/fonte/new_theme.tres" id="1_48n0l"]
 [ext_resource type="Script" path="res://scripts/menu/control.gd" id="1_ntnc2"]
 [ext_resource type="Texture2D" uid="uid://bpbk61xn78rx5" path="res://assets/controles.png" id="2_as0ie"]
+[ext_resource type="FontFile" uid="uid://bnl2o6gx1k34b" path="res://cenas/fonte/RevMiniPixel.ttf" id="4_gl5ep"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -24,11 +25,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
-layout_mode = 0
-offset_left = -9.0
-offset_top = 7.0
-offset_right = 375.0
-offset_bottom = 52.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
 alignment = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
@@ -40,7 +41,94 @@ flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(300, 196)
+position = Vector2(280, 241)
+scale = Vector2(1.15962, 1.12308)
 texture = ExtResource("2_as0ie")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 62.0
+offset_right = 162.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Cima"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 80.0
+offset_right = 164.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Baixo"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 62.0
+offset_right = 246.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Esquerda"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Direita"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 131.569
+offset_top = 97.2462
+offset_right = 171.569
+offset_bottom = 108.246
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Interagir
+"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 116.0
+offset_right = 215.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Skip"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 138.0
+offset_right = 177.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Ataque"
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 98.0
+offset_right = 262.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_gl5ep")
+theme_override_font_sizes/font_size = 8
+text = "Pause"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

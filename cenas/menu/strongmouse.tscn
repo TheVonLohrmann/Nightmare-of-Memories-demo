@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=3 uid="uid://jjyeln0lv0e"]
+
+[ext_resource type="FontFile" uid="uid://bnl2o6gx1k34b" path="res://cenas/fonte/RevMiniPixel.ttf" id="1_32cs1"]
+[ext_resource type="Script" path="res://cenas/menu/strongmouse.gd" id="1_dsvbf"]
+[ext_resource type="Texture2D" uid="uid://cdmrmqcivvyru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-1.png" id="3_qy6se"]
+[ext_resource type="Texture2D" uid="uid://cnoymbvvtx8ru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-2.png" id="4_jfcth"]
+[ext_resource type="Texture2D" uid="uid://bhjpufgcb6rq3" path="res://assets/MoveSet BoxingRat/Fight/Moveset-PunchClaw-1.png" id="5_3hcj2"]
+[ext_resource type="Texture2D" uid="uid://cfold0l8ilybc" path="res://assets/MoveSet BoxingRat/Fight/Moveset-PunchClaw-2.png" id="6_o3cpw"]
+[ext_resource type="Script" path="res://cenas/menu/Ratostrong2.gd" id="7_2gheh"]
+[ext_resource type="Theme" uid="uid://dqcaumrtxtrgd" path="res://cenas/fonte/new_theme.tres" id="7_aw6l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p706v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nsnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qy6se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jfcth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qy6se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jfcth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3hcj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o3cpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3hcj2")
+}],
+"loop": true,
+"name": &"rato dançando",
+"speed": 6.0
+}]
+
+[node name="Strongmouse" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dsvbf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 44.0
+grow_horizontal = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_aw6l4")
+text = " Return"
+flat = true
+
+[node name="Ratostrong2" type="CharacterBody2D" parent="."]
+position = Vector2(74, 103)
+script = ExtResource("7_2gheh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ratostrong2"]
+shape = SubResource("RectangleShape2D_p706v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ratostrong2"]
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(1.92187, 2.02344)
+sprite_frames = SubResource("SpriteFrames_6nsnf")
+animation = &"rato dançando"
+flip_h = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -42.0
+offset_right = 78.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_32cs1")
+text = "Dev Lider:"
+horizontal_alignment = 1
+
+[node name="Zero" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("7_aw6l4")
+text = "Zero"
+flat = true
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_32cs1")
+theme_override_font_sizes/font_size = 16
+text = "Os outros:"
+horizontal_alignment = 1
+
+[node name="judas" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("7_aw6l4")
+text = "Judas"
+flat = true
+
+[node name="Carvas" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("7_aw6l4")
+text = "Carvas"
+flat = true
+
+[node name="Senhormorango" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("7_aw6l4")
+text = "Senhor Morango "
+flat = true
+
+[node name="Ratostrong3" type="CharacterBody2D" parent="."]
+position = Vector2(305, 102)
+script = ExtResource("7_2gheh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ratostrong3"]
+shape = SubResource("RectangleShape2D_p706v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ratostrong3"]
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(1.92187, 2.02344)
+sprite_frames = SubResource("SpriteFrames_6nsnf")
+animation = &"rato dançando"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="VBoxContainer2/judas" to="." method="_on_judas_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Carvas" to="." method="_on_carvas_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Senhormorango" to="." method="_on_senhormorango_pressed"]

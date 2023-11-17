@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://6oba2417qj2a"]
+
+[ext_resource type="Script" path="res://scripts/itens/Lamp.gd" id="1_lwa6d"]
+[ext_resource type="Texture2D" uid="uid://jklqgd8bl8e" path="res://assets/lanterna.png" id="2_old40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7j78"]
+size = Vector2(19, 19)
+
+[node name="Lamp" type="StaticBody2D"]
+script = ExtResource("1_lwa6d")
+
+[node name="lamp" type="Sprite2D" parent="."]
+scale = Vector2(0.396, 0.365)
+texture = ExtResource("2_old40")
+
+[node name="Lamp_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp_Area"]
+shape = SubResource("RectangleShape2D_n7j78")
+
+[connection signal="body_entered" from="Lamp_Area" to="." method="_on_lamp_area_body_entered"]

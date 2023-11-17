@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://da1dhvkje00d"]
+
+[ext_resource type="PackedScene" uid="uid://b3sr8wy8a57ev" path="res://cenas/menu/pause_menu.tscn" id="1_d76qg"]
+[ext_resource type="PackedScene" uid="uid://craj2n53nrjjd" path="res://cenas/andares/garden.tscn" id="2_cdbee"]
+[ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="3_u0fkl"]
+[ext_resource type="PackedScene" uid="uid://6oba2417qj2a" path="res://cenas/itens/lamp.tscn" id="4_n6rnq"]
+[ext_resource type="AudioStream" uid="uid://b5fs5y213fc5" path="res://musica/SnapInsta.io - Michelle (128 kbps).mp3" id="5_13q3s"]
+[ext_resource type="PackedScene" uid="uid://b7l2xon8c16pf" path="res://cenas/enemy/playerdomal.tscn" id="6_p0w2c"]
+[ext_resource type="AudioStream" uid="uid://btsl6b1mg242s" path="res://musica/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3" id="7_501th"]
+[ext_resource type="Script" path="res://scripts/dialogoauto/dialogofrankgarden.gd" id="8_dum3o"]
+[ext_resource type="Texture2D" uid="uid://ckr5mcpqt33dp" path="res://assets/Dialog_Box_trespontos(16 x 16).png" id="9_xtqll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rorey"]
+size = Vector2(18, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kuwf"]
+size = Vector2(33, 15)
+
+[node name="level_3" type="Node2D"]
+
+[node name="Pause_menu" parent="." instance=ExtResource("1_d76qg")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[node name="Garden" parent="." instance=ExtResource("2_cdbee")]
+
+[node name="player" parent="." instance=ExtResource("3_u0fkl")]
+z_index = 2
+position = Vector2(119, 15)
+
+[node name="Lamp" parent="." instance=ExtResource("4_n6rnq")]
+position = Vector2(127, 35)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_13q3s")
+volume_db = -22.0
+autoplay = true
+
+[node name="playerdomal2" parent="." instance=ExtResource("6_p0w2c")]
+position = Vector2(297, 54)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal2"]
+stream = ExtResource("7_501th")
+max_distance = 200.0
+
+[node name="playerdomal" parent="." instance=ExtResource("6_p0w2c")]
+position = Vector2(155, 131)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal"]
+stream = ExtResource("7_501th")
+autoplay = true
+max_distance = 200.0
+
+[node name="areaload" type="Area2D" parent="."]
+position = Vector2(272, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaload"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_rorey")
+
+[node name="dialogofrank" type="Node2D" parent="." node_paths=PackedStringArray("_hud")]
+position = Vector2(-236, -112)
+script = ExtResource("8_dum3o")
+_hud = NodePath("frankarea/hud")
+
+[node name="frankarea" type="Area2D" parent="dialogofrank"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogofrank/frankarea"]
+z_index = 2
+position = Vector2(299.5, 148.5)
+shape = SubResource("RectangleShape2D_8kuwf")
+
+[node name="hud" type="CanvasLayer" parent="dialogofrank/frankarea"]
+
+[node name="texture" type="Sprite2D" parent="dialogofrank/frankarea"]
+z_index = 4
+position = Vector2(310, 111)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_xtqll")
+
+[connection signal="Lamp_coletada" from="Lamp" to="player" method="_on_lamp_lamp_coletada"]
+[connection signal="body_entered" from="areaload" to="player" method="_on_areaload_body_entered"]

@@ -1,16 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://2vk7c6jd70gc"]
+[gd_scene load_steps=25 format=3 uid="uid://2vk7c6jd70gc"]
 
 [ext_resource type="PackedScene" uid="uid://dmvdbf6agbhk8" path="res://cenas/andares/primeiro_andar.tscn" id="1_0s3f2"]
+[ext_resource type="PackedScene" uid="uid://b3sr8wy8a57ev" path="res://cenas/menu/pause_menu.tscn" id="1_nfj6d"]
 [ext_resource type="PackedScene" uid="uid://dl20lwyqkrcm" path="res://cenas/player/player.tscn" id="2_eq534"]
-[ext_resource type="PackedScene" uid="uid://dbbg6ao5noii2" path="res://cenas/enemy/boxerat.tscn" id="2_tw052"]
 [ext_resource type="Texture2D" uid="uid://cdmrmqcivvyru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-1.png" id="4_5nwoe"]
 [ext_resource type="Script" path="res://scripts/enemy/rato.gd" id="4_18t8i"]
 [ext_resource type="Texture2D" uid="uid://cnoymbvvtx8ru" path="res://assets/MoveSet BoxingRat/Fight/Moveset-FightingMove-2.png" id="5_uqvn0"]
 [ext_resource type="Texture2D" uid="uid://cfold0l8ilybc" path="res://assets/MoveSet BoxingRat/Fight/Moveset-PunchClaw-2.png" id="6_klag7"]
 [ext_resource type="AudioStream" uid="uid://b5fs5y213fc5" path="res://musica/SnapInsta.io - Michelle (128 kbps).mp3" id="8_0errl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_72oo7"]
-size = Vector2(30, 20)
+[ext_resource type="Texture2D" uid="uid://bxkpe6schn76o" path="res://assets/16x16/porta1.png" id="8_b7ta8"]
+[ext_resource type="Texture2D" uid="uid://ckr5mcpqt33dp" path="res://assets/Dialog_Box_trespontos(16 x 16).png" id="11_qwcca"]
+[ext_resource type="Script" path="res://scripts/Doors/DoorText.gd" id="12_huji4"]
+[ext_resource type="PackedScene" uid="uid://b7l2xon8c16pf" path="res://cenas/enemy/playerdomal.tscn" id="13_7yt3n"]
+[ext_resource type="AudioStream" uid="uid://btsl6b1mg242s" path="res://musica/SnapInsta.io - EFEITO SONORO_ FANTASMA (128 kbps).mp3" id="14_7c7h8"]
+[ext_resource type="PackedScene" uid="uid://b6t5r8pbvf2yw" path="res://cenas/itens/key_loud.tscn" id="14_kjxj7"]
+[ext_resource type="Script" path="res://scripts/dialogoauto/Maedialog.gd" id="14_vnsrd"]
+[ext_resource type="Script" path="res://scripts/Doors/DoorHome.gd" id="15_7lmb4"]
+[ext_resource type="PackedScene" uid="uid://6oba2417qj2a" path="res://cenas/itens/lamp.tscn" id="15_c230b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3656m"]
 animations = [{
@@ -41,27 +47,71 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n26nm"]
 size = Vector2(24, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcfmm"]
+size = Vector2(32, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaqwy"]
+size = Vector2(31.5, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h36ux"]
+size = Vector2(14, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgm5a"]
+size = Vector2(32, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72oo7"]
+size = Vector2(27, 11)
+
 [node name="level 2" type="Node2D"]
+
+[node name="Pause_menu" parent="." instance=ExtResource("1_nfj6d")]
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="PrimeiroAndar" parent="Node2D" instance=ExtResource("1_0s3f2")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0errl")
+volume_db = -22.0
+autoplay = true
 
 [node name="player" parent="." instance=ExtResource("2_eq534")]
-position = Vector2(25, 6)
+position = Vector2(26, -6)
 
-[node name="boxerat" parent="." instance=ExtResource("2_tw052")]
-position = Vector2(304, -20)
+[node name="playerdomal" parent="." instance=ExtResource("13_7yt3n")]
+position = Vector2(298, 100)
 
-[node name="areaload" type="Area2D" parent="."]
-position = Vector2(27, 10)
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal"]
+stream = ExtResource("14_7c7h8")
+autoplay = true
+max_distance = 200.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaload"]
-position = Vector2(133, 396)
-shape = SubResource("RectangleShape2D_72oo7")
+[node name="playerdomal2" parent="." instance=ExtResource("13_7yt3n")]
+position = Vector2(21, 162)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal2"]
+stream = ExtResource("14_7c7h8")
+autoplay = true
+max_distance = 200.0
+
+[node name="playerdomal3" parent="." instance=ExtResource("13_7yt3n")]
+position = Vector2(58, 300)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal3"]
+stream = ExtResource("14_7c7h8")
+autoplay = true
+max_distance = 200.0
+
+[node name="playerdomal4" parent="." instance=ExtResource("13_7yt3n")]
+position = Vector2(316, -36)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="playerdomal4"]
+stream = ExtResource("14_7c7h8")
+autoplay = true
+max_distance = 200.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 texture_filter = 1
@@ -77,21 +127,76 @@ frame_progress = 0.457447
 position = Vector2(302, -203)
 shape = SubResource("RectangleShape2D_n26nm")
 
-[node name="boxerat2" parent="." instance=ExtResource("2_tw052")]
-position = Vector2(155, 79)
+[node name="Lamp" parent="." instance=ExtResource("15_c230b")]
+position = Vector2(27, 29)
 
-[node name="boxerat3" parent="." instance=ExtResource("2_tw052")]
-position = Vector2(81, 181)
+[node name="Key_loud" parent="." instance=ExtResource("14_kjxj7")]
+z_index = 6
+position = Vector2(380, 140)
 
-[node name="boxerat4" parent="." instance=ExtResource("2_tw052")]
-position = Vector2(320, 117)
+[node name="DoorHome" type="StaticBody2D" parent="."]
+z_index = 4
+position = Vector2(0, -1)
+script = ExtResource("15_7lmb4")
 
-[node name="boxerat5" parent="." instance=ExtResource("2_tw052")]
-position = Vector2(55, 373)
+[node name="DoorTexture" type="Sprite2D" parent="DoorHome"]
+texture_filter = 1
+position = Vector2(160, 412)
+scale = Vector2(2, 1)
+texture = ExtResource("8_b7ta8")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_0errl")
-volume_db = -22.0
-autoplay = true
+[node name="DoorLock" type="CollisionShape2D" parent="DoorHome"]
+position = Vector2(160, 399)
+shape = SubResource("RectangleShape2D_qcfmm")
 
-[connection signal="body_entered" from="areaload" to="player" method="_on_areaload_body_entered"]
+[node name="DoorSecondHome" type="Area2D" parent="DoorHome"]
+position = Vector2(168, 448)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHome/DoorSecondHome"]
+position = Vector2(-8, -53.5)
+shape = SubResource("RectangleShape2D_yaqwy")
+
+[node name="Maedialog" type="Node2D" parent="." node_paths=PackedStringArray("_hud")]
+position = Vector2(151, -22)
+script = ExtResource("14_vnsrd")
+_hud = NodePath("mae_area/hud")
+
+[node name="mae_area" type="Area2D" parent="Maedialog"]
+position = Vector2(-1, 0)
+
+[node name="hud" type="CanvasLayer" parent="Maedialog/mae_area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Maedialog/mae_area"]
+position = Vector2(17, 6)
+shape = SubResource("RectangleShape2D_h36ux")
+
+[node name="texturemae" type="Sprite2D" parent="Maedialog/mae_area"]
+position = Vector2(5, -8)
+scale = Vector2(0.640625, 0.546875)
+texture = ExtResource("11_qwcca")
+
+[node name="DoorText" type="Node2D" parent="." node_paths=PackedStringArray("_hud")]
+position = Vector2(159, 391)
+script = ExtResource("12_huji4")
+_hud = NodePath("Door_area/Hud")
+
+[node name="Door_area" type="Area2D" parent="DoorText"]
+
+[node name="Hud" type="CanvasLayer" parent="DoorText/Door_area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorText/Door_area"]
+position = Vector2(1, -7)
+shape = SubResource("RectangleShape2D_lgm5a")
+
+[node name="Gardenarea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gardenarea"]
+position = Vector2(160, 412)
+shape = SubResource("RectangleShape2D_72oo7")
+
+[connection signal="Lamp_coletada" from="Lamp" to="player" method="_on_lamp_lamp_coletada"]
+[connection signal="Door_Open_Second" from="Key_loud" to="DoorHome" method="_on_key_loud_door_open_second"]
+[connection signal="No_txt" from="Key_loud" to="DoorText" method="_on_key_loud_no_txt"]
+[connection signal="body_entered" from="DoorHome/DoorSecondHome" to="Key_loud" method="_on_door_second_home_body_entered"]
+[connection signal="body_exited" from="DoorHome/DoorSecondHome" to="Key_loud" method="_on_door_second_home_body_exited"]
+[connection signal="body_entered" from="Gardenarea" to="player" method="_on_gardenarea_body_entered"]
